@@ -33,7 +33,15 @@ class _QuoteListState extends State<QuoteList> {
         //.map function loops through 'quotes' list_array, save it to variable(quote)
         //return the value(quote) in Text, and print in list format
         // children: quotes.map((quote) => Text('${quote.author} - ${quote.text}')).toList(),//print each loop into list
-        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),//map & print each loop into list
+        children: quotes.map((quote) => QuoteCard(
+          quote: quote,
+          delete: () {
+            setState(() {
+              quotes.remove(quote);
+            });
+          }
+
+        )).toList(),//map & print each loop into list
 
       ),
     );
